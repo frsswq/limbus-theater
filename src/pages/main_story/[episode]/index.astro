@@ -4,12 +4,23 @@ import { MAIN_STORIES } from '@/types/types';
 import { getCollection } from 'astro:content';
 import { mainChapterName } from '@/data/data';
 import { formatToDisplayName } from '@/utils/helper';
+import type { CommonItem } from '@/types/types';
 
 export function getStaticPaths() {
 	return MAIN_STORIES.map((ep) => {
 		return { params: { episode: ep } };
 	});
 }
+
+type Stories = {
+	id: string;
+	data: {
+		dataList: CommonItem[];
+	};
+	filePath: string;
+	digest: string;
+	collection: string;
+};
 
 const { episode } = Astro.params;
 
@@ -20,42 +31,44 @@ const displayChapterName = formatToDisplayName(mainChapterName[episode]);
 <Layout title={`${displayChapterName}`}>
 	<main class="flex min-h-dvh w-full flex-col items-center justify-center">
 		<div>
-			{
-				episodeStories
-					.sort((a, b) => {
-						const aNumber = a.id.slice(-3, -1);
-						const bNumber = b.id.slice(-3, -1);
+			<div class="flex flex-col gap-x-6 gap-y-3 py-16 text-sm">
+				{
+					episodeStories.length > 0 &&
+						Array.from(
+							episodeStories.reduce((groups, story) => {
+								const baseId = story.id.slice(0, -1);
 
-						if (aNumber !== bNumber) {
-							return parseInt(aNumber) - parseInt(bNumber);
-						}
+								if (!groups.has(baseId)) {
+									groups.set(baseId, []);
+								}
+								groups.get(baseId).push(story);
+								return groups;
+							}, new Map())
+						).map(([baseId, stories]: [string, Stories[]]) => {
+							const currChapter = baseId.slice(4, 5);
+							const currEpisode = baseId.slice(-2);
+							const displayEpisodeName = currChapter + '-' + currEpisode;
 
-						const aLetter = a.id.slice(-1);
-						const bLetter = b.id.slice(-1);
+							stories.sort((a) => (a.id.slice(-1) === 'a' ? 1 : -1));
 
-						if (aLetter === 'a' && bLetter === 'b') return 1;
-						if (aLetter === 'b' && bLetter === 'a') return -1;
-						return 0;
-					})
-					.map((story) => {
-						const currChapter = story.id.slice(4, 5);
-						const currEpisode = story.id.slice(5, 7);
-						const currSuffix = story.id
-							.slice(-1)
-							.replace('a', 'Post-Battle')
-							.replace('b', 'Pre-Battle');
-
-						const displayEpisodeName = currChapter + '-' + currEpisode + ' : ' + currSuffix;
-
-						return (
-							<>
-								<div>
-									<a href={`/main_story/${episode}/${story.id.slice(-3)}`}>{displayEpisodeName}</a>
-								</div>
-							</>
-						);
-					})
-			}
+							return (
+								<>
+									<div class="flex flex-col gap-2">
+										<p>{displayEpisodeName}</p>
+										<div class="flex flex-col gap-1">
+											{stories.map((story: any) => {
+												const suffix = story.id.slice(-1) === 'a' ? 'Post-Battle' : 'Pre-Battle';
+												return (
+													<a href={`/main_story/${episode}/${story.id.slice(-3)}`}>{suffix}</a>
+												);
+											})}
+										</div>
+									</div>
+								</>
+							);
+						})
+				}
+			</div>
 		</div>
 	</main>
 </Layout>
