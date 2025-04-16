@@ -9,6 +9,16 @@ export type CommonItem = {
 	content: string;
 };
 
+export type CommonCollection = {
+	id: string;
+	data: {
+		dataList: CommonItem[];
+	};
+	filePath: string;
+	digest: string;
+	collection: string;
+};
+
 export type PersonalityItem = {
 	id: number;
 	title: string;
