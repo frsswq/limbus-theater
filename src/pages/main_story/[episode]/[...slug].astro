@@ -1,0 +1,39 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+import { getCollection } from 'astro:content';
+import { MAIN_STORIES, type MainStoryKey, type MainStory } from '@/types/types';
+
+export async function getStaticPaths() {
+	const paths: {
+		params: {
+			episode: MainStoryKey;
+			slug: string;
+		};
+		props: {
+			entry: MainStory;
+		};
+	}[] = [];
+
+	for (const mainStory of MAIN_STORIES) {
+		const entries = await getCollection(mainStory);
+		entries.forEach((collectionEntry) => {
+			paths.push({
+				params: {
+					episode: mainStory,
+					slug: collectionEntry.id.slice(-3)
+				},
+				props: { entry: collectionEntry as MainStory }
+			});
+		});
+	}
+
+	console.log(paths);
+
+	return paths;
+}
+---
+
+<Layout title="Main Story">
+	<main class="flex min-h-dvh items-center justify-center"></main>
+</Layout>

@@ -1,0 +1,59 @@
+{
+  "list": [
+    {
+      "eventId": "NightCleanUp",
+      "mainUIPhaseTypeList": [
+        "Lobby",
+        "Stage"
+      ],
+      "bannerSpriteId": "banner_NightSweep_event",
+      "isBannerVisible": true
+    },
+    {
+      "eventId": "NightCleanUpReward",
+      "mainUIPhaseTypeList": [
+        "Stage"
+      ],
+      "isBannerVisible": true
+    },
+    {
+      "eventId": "RailwayDungeonBanner",
+      "mainUIPhaseTypeList": [
+        "Lobby"
+      ],
+      "bannerSpriteId": "banner_RailwayLine5",
+      "isBannerVisible": true
+    },
+    {
+      "eventId": "NewUserDailyLoginEvent",
+      "mainUIPhaseTypeList": [
+        "Lobby"
+      ],
+      "bannerSpriteId": "banner_NewUser_event",
+      "isBannerVisible": true
+    },
+    {
+      "eventId": "ReturningUserDailyLoginEvent",
+      "mainUIPhaseTypeList": [
+        "Lobby"
+      ],
+      "bannerSpriteId": "banner_ReturnUser",
+      "isBannerVisible": true
+    },
+    {
+      "eventId": "MirrorDungeon",
+      "mainUIPhaseTypeList": [
+        "Lobby"
+      ],
+      "bannerSpriteId": "banner_MirrorDungeon5",
+      "isBannerVisible": true
+    },
+    {
+      "eventId": "RemainMembership",
+      "mainUIPhaseTypeList": [
+        "Lobby"
+      ],
+      "isBannerVisible": false
+    }
+  ]
+}

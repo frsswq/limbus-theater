@@ -1,0 +1,43 @@
+{
+  "list": [
+    {
+      "id": "CANDY_FOR_CHARON",
+      "buffA": {
+        "id": "CandyForCharon_LowMorale",
+        "stack": 1,
+        "turn": 0,
+        "buffClass": "VolatileBuff",
+        "buffType": "Neutral",
+        "canBeDespelled": false,
+        "list": [
+          {
+            "ability": "CandyForCharon",
+            "value": -1,
+            "buffData": {
+              "buffKeyword": "CandyForCharon",
+              "value": 3
+            }
+          }
+        ]
+      },
+      "buffB": {
+        "id": "CandyForCharon_Panic",
+        "stack": 1,
+        "turn": 0,
+        "buffClass": "VolatileBuff",
+        "buffType": "Neutral",
+        "canBeDespelled": false,
+        "list": [
+          {
+            "ability": "CandyForCharon",
+            "value": -2,
+            "buffData": {
+              "buffKeyword": "CandyForCharon",
+              "value": 5
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

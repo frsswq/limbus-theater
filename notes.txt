@@ -1,0 +1,80 @@
+// scope creep lmao
+
+# main / side story:
+
+1st-3rd char:
+ - EN_ : english
+ - KR_ : korea
+ - JP_ : japan
+
+4th-5th char:
+ - S0 : main story id
+ - E0 : side story id
+
+6th-8th char :
+ - 000 : story id
+
+9th char:
+ - A : after
+ - B : before
+ - X : idk
+
+# id story:
+
+1st-3rd char:
+ - EN_ : english
+ - KR_ : korea
+ - JP_ : japan
+
+4th-6th char:
+ - 101 : Yi Sang
+ - 102 : Faust
+ - 103 : Don Quixote
+ - 104 : Ryoshu
+ - 105 : Meursault
+ - 106 : Hong Lu
+ - 107 : Heathcliff
+ - 108 : Ishmael
+ - 109 : Rodion
+ - 110 : Sinclair
+ - 111 : Outis
+ - 112 : Gregor
+
+7th-8th char:
+ - 00 : specific identities id
+
+ref: EN_Personalities.json
+
+# dungeon story
+
+1st-3rd char:
+ - EN_ : english
+ - KR_ : korea
+ - JP_ : japan
+
+4th-5th char:
+ - 0D : dungeon id
+
+6th char:
+ - 0 : floor id
+
+7th - 8th :
+ - 00 : story id
+
+9th :
+ - A : after
+ - B : before
+ - I : boss / ending
+
+10th (optional)
+
+---
+
+// 	selva_oscura: 'S0',
+// 	the_outcast: 'S1',
+// 	the_unloving: 'S2',
+// 	the_unconfronting: 'S3',
+// 	the_unchanging: 'S4',
+// 	the_evil_defining: 'S5',
+// 	the_heartbreaking: 'S6',
+// 	the_dream_ending: 'S7'

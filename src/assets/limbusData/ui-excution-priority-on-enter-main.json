@@ -1,0 +1,36 @@
+{
+  "list": [
+    {
+      "id": "NewDungeonUpdated",
+      "priority": 6
+    },
+    {
+      "id": "BattlePassOpened",
+      "priority": 5
+    },
+    {
+      "id": "SeasonOpenedOrClosed",
+      "priority": 4
+    },
+    {
+      "id": "PersonalityLevelLimitRelease",
+      "priority": 7
+    },
+    {
+      "id": "NewUserDailyLoginEvent",
+      "priority": 2
+    },
+    {
+      "id": "ReturningUserDailyLoginEvent",
+      "priority": 3
+    },
+    {
+      "id": "2025_fools_event",
+      "priority": 1
+    },
+    {
+      "id": "Membership_Remain_7days_Alarm",
+      "priority": 99
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+import Layout from '@layouts/Layout.astro';
+import idData from '@assets/limbusData/EN_Personalities.json';
+import { IDENTITIES, type IdentityStoryKey, type IdentitiesStory } from '@/types/types';
+import unknownSprite from '@assets/limbusImages/icons/storyLog/Other/None_Extra.png';
+import { getStoryLogImage, formatToDisplayName } from '@/utils/helper';
+
+export async function getStaticPaths() {
+	const paths: {
+		params: {
+			identity: IdentityStoryKey;
+			slug: string;
+		};
+		props: {
+			entry: IdentitiesStory;
+		};
+	}[] = [];
+
+	for (const identity of IDENTITIES) {
+		const entries = await getCollection(identity);
+		entries.forEach((collectionEntry) => {
+			paths.push({
+				params: {
+					identity: identity,
+					slug: collectionEntry.id.slice(-2)
+				},
+				props: { entry: collectionEntry as IdentitiesStory }
+			});
+		});
+	}
+
+	return paths;
+}
+
+const { entry } = Astro.props;
+const { identity } = Astro.params;
+
+const displayName = formatToDisplayName(identity);
+const cleanId = parseInt(entry.id.slice(4));
+const personality = idData.dataList.find((item) => item.id === cleanId);
+---
+
+<Layout title={`${personality?.title || 'Story'} - ${displayName}`}>
+	<main class="flex min-h-dvh flex-col items-center justify-center gap-2">
+		<div class="flex flex-col gap-2 py-12">
+			{
+				entry.data.dataList.map((data, index) => {
+					const spriteImage = getStoryLogImage(data.model);
+					const hasContentSource = data.teller || data.title;
+					const showImage = spriteImage !== unknownSprite || hasContentSource;
+					const altText = data.model ? `${data.model} - Sprite` : 'Placeholder Image';
+
+					return (
+						<div
+							data-id={`story-${index}-${data.teller || 'noteller'}-${data.title || 'notitle'}`}
+							class="flex items-center gap-x-3 rounded-lg bg-zinc-50 px-2 py-2 transition-colors hover:bg-zinc-100"
+						>
+							{showImage && (
+								<Image
+									src={spriteImage}
+									alt={altText}
+									width="256"
+									height="256"
+									class="size-16 shrink-0 rounded-md"
+									quality={80}
+									loading={index > 3 ? 'lazy' : 'eager'}
+								/>
+							)}
+
+							<div class="mb-auto flex flex-1 flex-col gap-y-0.5 pt-0.5">
+								{hasContentSource && (
+									<div class="flex gap-x-2 truncate text-xs font-medium">
+										{data.teller && <span class="truncate">{data.teller}</span>}
+										{data.teller && data.title && <span>-</span>}
+										{data.title && <span class="truncate">{data.title}</span>}
+									</div>
+								)}
+
+								{data.content && (
+									<p class="max-w-[75ch] pr-2 text-left text-xs text-pretty break-words">
+										{data.content}
+									</p>
+								)}
+							</div>
+						</div>
+					);
+				})
+			}
+		</div>
+	</main>
+</Layout>

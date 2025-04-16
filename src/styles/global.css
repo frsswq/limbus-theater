@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@import './fonts.css';
+
+@layer components {
+	.mikodacs {
+		font-family: 'Mikodacs', sans-serif;
+	}
+
+	.excelsior {
+		font-family: 'Excelsior Sans', sans-serif;
+	}
+}

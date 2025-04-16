@@ -1,0 +1,19 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const mainStory = ['00', '01', '02', '03', '04', '05', '06', '07'] as const;
+---
+
+<Layout title="Main Story">
+	<main class="flex min-h-dvh items-center justify-center">
+		<div class="flex flex-wrap items-center justify-center gap-4 font-medium tabular-nums">
+			{
+				mainStory.map((ep: string) => (
+					<a href={`/main_story/${ep}`} class="">
+						{ep.slice(-2)}
+					</a>
+				))
+			}
+		</div>
+	</main>
+</Layout>

@@ -1,0 +1,45 @@
+@font-face {
+	font-family: 'Excelsior Sans';
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src: url('/limbusFonts/ExcelsiorSans.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'Mikodacs';
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src: url('/limbusFonts/Mikodacs.woff2') format('woff2');
+}
+
+/* Liberation Fonts */
+
+/* @font-face {
+	font-family: 'Liberation Sans';
+	font-weight: 400;
+	font-style: normal;
+	src: url('/limbusFonts/LiberationSans-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Liberation Sans';
+	font-weight: 400;
+	font-style: italic;
+	src: url('/limbusFonts/LiberationSans-Italic.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Liberation Sans';
+	font-weight: 700;
+	font-style: normal;
+	src: url('/limbusFonts/LiberationSans-Bold.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Liberation Sans';
+	font-weight: 700;
+	font-style: italic;
+	src: url('/limbusFonts/LiberationSans-BoldItalic.woff2') format('woff2');
+} */

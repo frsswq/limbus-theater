@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import idData from '@assets/limbusData/EN_Personalities.json';
+
+const defaultID = idData.dataList.slice(0, 12).map((id) => ({
+	...id,
+	url: id.name.toLowerCase().replace(/\s+/g, '_')
+}));
+---
+
+<Layout title="Identity Archive">
+	<main class="flex min-h-dvh items-center justify-center">
+		<ul class="grid grid-cols-2 gap-x-8 gap-y-12 text-sm md:grid-cols-4 lg:grid-cols-6">
+			{
+				defaultID.map((id) => (
+					<li class="flex items-center justify-center">
+						<a href={`/identity_archive/${id.url}`}>{id.name}</a>
+					</li>
+				))
+			}
+		</ul>
+	</main>
+</Layout>
