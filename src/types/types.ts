@@ -34,7 +34,7 @@ export const IDENTITIES = [
 
 export type IdentityStoryKey = (typeof IDENTITIES)[number];
 
-export const MAIN_STORIES = ['S0', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6', 'S7'] as const;
+export const MAIN_STORIES = ['s0', 's1', 's2', 's3', 's4', 's5', 's6', 's7'] as const;
 
 export type MainStoryKey = (typeof MAIN_STORIES)[number];
 

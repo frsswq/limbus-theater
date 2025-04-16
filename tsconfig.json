@@ -1,7 +1,7 @@
 {
 	"extends": "astro/tsconfigs/strict",
 	"include": [".astro/types.d.ts", "**/*"],
-	"exclude": ["dist", "src/assets/limbusData"],
+	"exclude": ["dist", "src/assets/limbusData/**", "src/temp/**"],
 	"compilerOptions": {
 		"strictNullChecks": true,
 		"allowJs": true,

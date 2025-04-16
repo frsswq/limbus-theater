@@ -1,16 +1,17 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { mainChapterName } from '@/data/data';
 
-const mainStory = ['00', '01', '02', '03', '04', '05', '06', '07'] as const;
+const chapters = ['s0', 's1', 's2', 's3', 's4', 's5', 's6', 's7'] as const;
 ---
 
 <Layout title="Main Story">
 	<main class="flex min-h-dvh items-center justify-center">
-		<div class="flex flex-wrap items-center justify-center gap-4 font-medium tabular-nums">
+		<div class="flex flex-col items-center justify-center gap-6">
 			{
-				mainStory.map((ep: string) => (
-					<a href={`/main_story/${ep}`} class="">
-						{ep.slice(-2)}
+				chapters.map((ep) => (
+					<a href={`/main_story/${ep}`} class="leading-none font-medium tracking-tight capitalize">
+						{mainChapterName[ep].replaceAll('_', ' ')}
 					</a>
 				))
 			}

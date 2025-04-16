@@ -70,11 +70,3 @@ ref: EN_Personalities.json
 
 ---
 
-// 	selva_oscura: 'S0',
-// 	the_outcast: 'S1',
-// 	the_unloving: 'S2',
-// 	the_unconfronting: 'S3',
-// 	the_unchanging: 'S4',
-// 	the_evil_defining: 'S5',
-// 	the_heartbreaking: 'S6',
-// 	the_dream_ending: 'S7'

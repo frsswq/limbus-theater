@@ -58,12 +58,12 @@ export const collections = {
 	sinclair: createIdentityCollection('110'),
 	outis: createIdentityCollection('111'),
 	gregor: createIdentityCollection('112'),
-	S0: createMainChapterCollection('0'),
-	S1: createMainChapterCollection('1'),
-	S2: createMainChapterCollection('2'),
-	S3: createMainChapterCollection('3'),
-	S4: createMainChapterCollection('4'),
-	S5: createMainChapterCollection('5'),
-	S6: createMainChapterCollection('6'),
-	S7: createMainChapterCollection('7')
+	s0: createMainChapterCollection('0'),
+	s1: createMainChapterCollection('1'),
+	s2: createMainChapterCollection('2'),
+	s3: createMainChapterCollection('3'),
+	s4: createMainChapterCollection('4'),
+	s5: createMainChapterCollection('5'),
+	s6: createMainChapterCollection('6'),
+	s7: createMainChapterCollection('7')
 } as const;

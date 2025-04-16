@@ -1,6 +1,9 @@
 ---
 import Layout from '@/layouts/Layout.astro';
 import { MAIN_STORIES } from '@/types/types';
+import { getCollection } from 'astro:content';
+import { mainChapterName } from '@/data/data';
+import { formatToDisplayName } from '@/utils/helper';
 
 export function getStaticPaths() {
 	return MAIN_STORIES.map((ep) => {
@@ -9,12 +12,50 @@ export function getStaticPaths() {
 }
 
 const { episode } = Astro.params;
+
+const episodeStories = await getCollection(episode);
+const displayChapterName = formatToDisplayName(mainChapterName[episode]);
 ---
 
-<Layout title={`Episode ${episode}`}>
-	<main class="flex min-h-dvh w-full items-center justify-center">
+<Layout title={`${displayChapterName}`}>
+	<main class="flex min-h-dvh w-full flex-col items-center justify-center">
 		<div>
-			<p>CHECK</p>
+			{
+				episodeStories
+					.sort((a, b) => {
+						const aNumber = a.id.slice(-3, -1);
+						const bNumber = b.id.slice(-3, -1);
+
+						if (aNumber !== bNumber) {
+							return parseInt(aNumber) - parseInt(bNumber);
+						}
+
+						const aLetter = a.id.slice(-1);
+						const bLetter = b.id.slice(-1);
+
+						if (aLetter === 'a' && bLetter === 'b') return 1;
+						if (aLetter === 'b' && bLetter === 'a') return -1;
+						return 0;
+					})
+					.map((story) => {
+						const currChapter = story.id.slice(4, 5);
+						const currEpisode = story.id.slice(5, 7);
+						const currSuffix = story.id
+							.slice(-1)
+							.replace('a', 'Post-Battle')
+							.replace('b', 'Pre-Battle');
+
+						const displayEpisodeName = currChapter + '-' + currEpisode + ' : ' + currSuffix;
+
+						return (
+							<>
+								<div>
+									<a href={`/main_story/${episode}/${story.id.slice(-3)}`}>{displayEpisodeName}</a>
+								</div>
+							</>
+						);
+					})
+			}
 		</div>
 	</main>
 </Layout>
